@@ -1,8 +1,6 @@
 h1{
 	text-align: center;
-	padding-top: 18px;
 }
-
 
 
 span.glyphicon {
@@ -11,6 +9,7 @@ span.glyphicon {
 }
 
 .page_header{
+	position:absolute;
 	background: rgba(42, 58, 77,0.4);
 	height: 80px;
 	width: 100%;
@@ -21,4 +20,24 @@ body{
 	background-repeat: no-repeat;
  	background-size:100% auto;
 	color: white;
+}
+
+
+.content{
+	position:absolute;
+	margin-top: 140px;
+	margin-left: 2%;
+}
+
+.playground {
+	background-color: rgba(42, 58, 77,0.4);
+    border-radius: 25px;
+    border: 2px solid #FFFFFF;
+    width: 1200px;
+    height: 600px; 
+    padding:280px;
+}
+
+.loginbutton{
+	   background-color: orangered;
 }
