@@ -1,0 +1,24 @@
+h1{
+	text-align: center;
+	padding-top: 18px;
+}
+
+
+
+span.glyphicon {
+    color: orangered;
+    margin-right: 5px;
+}
+
+.page_header{
+	background: rgba(42, 58, 77,0.4);
+	height: 80px;
+	width: 100%;
+}
+
+body{
+	background-image: url("images/background_wood.jpg");
+	background-repeat: no-repeat;
+ 	background-size:100% auto;
+	color: white;
+}
