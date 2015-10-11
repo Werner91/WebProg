@@ -25,7 +25,7 @@ body{
 
 .content{
 	position:absolute;
-	margin-top: 140px;
+	margin-top: 120px;
 	margin-left: 2%;
 }
 
@@ -34,10 +34,47 @@ body{
     border-radius: 25px;
     border: 2px solid #FFFFFF;
     width: 1200px;
-    height: 600px; 
+    height: 660px; 
     padding:280px;
 }
 
 .loginbutton{
 	   background-color: orangered;
+}
+
+.catalogs{
+	background-color: rgba(42, 58, 77,0.4);
+    border-radius: 25px;
+    border: 2px solid #FFFFFF;
+    width: 450px;
+    height: 320px; 
+    padding-top:20px;
+    padding-left:30px;
+    padding-right:30px;
+    margin-left:150px;
+    margin-bottom:50px;
+}
+
+.highscore{
+	background-color: rgba(42, 58, 77,0.4);
+    border-radius: 25px;
+    border: 2px solid #FFFFFF;
+    width: 450px;
+    height: 290px; 
+    padding-top:20px;
+    padding-left:30px;
+    padding-right:30px;
+    margin-left:150px;
+}
+
+footer {
+    position: absolute;
+    bottom: 20px;;
+    width: 100%;
+    text-align: center;
+    color: grey;
+}
+
+hr{
+	border-color: grey;
 }
