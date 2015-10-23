@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fragenkatalog>
+	<fragenblock>
+		<frage>Welcher Mechanismus kann unter Unix zur Kommunikation über das Netzwerk verwendet werden?</frage>
+		<antwort korrekt="true">Sockets</antwort>
+		<antwort korrekt="false">Message Queues</antwort>
+		<antwort korrekt="false">Pipes</antwort>
+		<antwort korrekt="false">Semaphore</antwort>
+	</fragenblock>
+</fragenkatalog>
