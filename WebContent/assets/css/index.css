@@ -17,7 +17,7 @@ span.glyphicon {
 }
 
 body{
-	background-image: url("images/background_wood.jpg");
+	background-image: url("../../images/background_wood.jpg");
 	background-repeat: no-repeat;
  	background-size:100% auto;
 	color: white;
