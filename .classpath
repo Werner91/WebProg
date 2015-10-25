@@ -8,5 +8,10 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/Werner/Desktop/AI 5.Semester/WebProg/WebProg/catalogReader/jdom-2.0.6/jdom-2.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Werner/Desktop/AI 5.Semester/WebProg/WebProg/catalogReader/jdom-2.0.6/jdom-2.0.6-contrib.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Werner/Desktop/AI 5.Semester/WebProg/WebProg/catalogReader/jdom-2.0.6/jdom-2.0.6-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Werner/Desktop/AI 5.Semester/WebProg/WebProg/catalogReader/jdom-2.0.6/jdom-2.0.6-junit.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Werner/Desktop/AI 5.Semester/WebProg/WebProg/catalogReader/jdom-2.0.6/jdom-2.0.6-sources.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
