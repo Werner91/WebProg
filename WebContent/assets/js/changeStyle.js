@@ -40,12 +40,9 @@ function changeBackgroundColorOnClick(event){
 	var catalogSysProg = document.getElementById("catalogSysProg");
 	var currentColorSysProg = document.getElementById("catalogSysProg").style.backgroundColor;
 	
-	var flag = false;
 	
-	
-	
-	switch(event.target.parameter){
-	
+	switch(event.target.parameter){ //holt parameter
+		
 	case "one":	
 			if(currentColorOne == ""){
 				catalogOne.style.backgroundColor = "orangered";
@@ -53,8 +50,17 @@ function changeBackgroundColorOnClick(event){
 			else{
 				catalogOne.style.backgroundColor = "";
 			}
+				
+			if(currentColorSimple == "orangered"){
+				catalogSimple.style.backgroundColor = "";
+			}
+				
+			if(currentColorSysProg == "orangered"){
+				catalogSysProg.style.backgroundColor = "";
+			}
+				
 			break;
-		
+			
 	case "simple":	
 			if(currentColorSimple == ""){
 				catalogSimple.style.backgroundColor = "orangered";
@@ -62,8 +68,17 @@ function changeBackgroundColorOnClick(event){
 			else{
 				catalogSimple.style.backgroundColor = "";
 			}
+				
+			if(currentColorOne == "orangered"){
+				catalogOne.style.backgroundColor = "";
+			}
+				
+			if(currentColorSysProg == "orangered"){
+				catalogSysProg.style.backgroundColor = "";
+			}
+				
 			break;
-			
+				
 	case "sysprog":
 			if(currentColorSysProg == ""){
 				catalogSysProg.style.backgroundColor = "orangered";
@@ -71,19 +86,21 @@ function changeBackgroundColorOnClick(event){
 			else{
 				catalogSysProg.style.backgroundColor = "";
 			}
+				
+			if(currentColorOne == "orangered"){
+				catalogOne.style.backgroundColor = "";
+			}
+				
+			if(currentColorSimple == "orangered"){
+				catalogSimple.style.backgroundColor = "";
+			}
+				
 			break;
-			
+				
 	default: alert("Parameter ungültig: " + event.target.parameter);
-	
+		
 	}
-	
-	
-	
 }
-
-
-
-
 
 
 
