@@ -4,14 +4,33 @@ document.addEventListener("DOMContentLoaded", init, false); //Event wird geworfe
 function init(){
 	//alert("init aufgerufen");
 	
-	var buttonStyleStandard = document.getElementById("buttonStyleStandard");
+	var buttonStyleStandard = document.getElementById("buttonStyleStandard").addEventListener("click", changeStyleStandard, false);
 	var buttonStyleChristmas = document.getElementById("buttonStyleChristmas");
 	var buttonStyleHalloween = document.getElementById("buttonStyleHalloween");
 	
-	buttonStyleStandard.addEventListener("click", changeStyleStandard, false);
+	var buttonLogin = document.getElementById("buttonLogin");
+	
+	//buttonStyleStandard.addEventListener("click", changeStyleStandard, false);
 	buttonStyleChristmas.addEventListener("click", changeStyleChristmas, false);
 	buttonStyleHalloween.addEventListener("click", changeStyleHalloween, false); /*false: Listener reagiert erst beim Bubbling/ true: Listener reagiert beim absteigen im Baum*/
+	buttonLogin.addEventListener("click", addPlayerToTable, false);
 	
+}
+
+function addPlayerToTable(){
+	var playerName = document.getElementById("inputPlayerName").value; //Spielername aus Textfeld wird übergeben
+	var table = document.getElementById("tablePlayerlistBody");
+	//alert(document.getElementById("inputPlayerName"));
+	
+	if(playerName === ""){
+		alert("Bitte geben Sie einen Namen ein!");
+	}
+	else{
+		var tr = document.createElement("tr");
+		var playerNameText = document.createTextNode(playerName);
+		tr.appendChild(playerNameText);
+		table.appendChild(tr);
+	}
 }
 
 

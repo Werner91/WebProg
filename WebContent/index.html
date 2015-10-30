@@ -33,10 +33,10 @@
 			<div class="playground" style="float:left">
 				<label>
 					Name:
-					<input class="textbox" type="text" name="name" size="30" maxlength="30">
+					<input id="inputPlayerName" class="textbox" type="text" name="name" size="30" maxlength="30">
 				</label>
 				<br>
-				<input class="loginbutton" type="submit" value="Login" />
+				<input id="buttonLogin" class="loginbutton" type="submit" value="Login" />
 			</div>
 			<div class="catalogs" style="float:right">
 				<h4>
@@ -62,10 +62,11 @@
 				</thead>
 				<tbody id="tablePlayerlistBody">
 					<tr>
-						<td>keine Spieler</td>
+						<td></td>
 						<td></td>
 						<td></td>								
 					</tr>
+					
                </tbody>
                </table>
 			</div>
