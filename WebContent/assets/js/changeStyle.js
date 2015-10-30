@@ -17,23 +17,68 @@ function init(){
 	buttonStyleHalloween.addEventListener("click", changeStyleHalloween, false); /*false: Listener reagiert erst beim Bubbling/ true: Listener reagiert beim absteigen im Baum*/
 	buttonLogin.addEventListener("click", addPlayerToTable, false);
 	catalogOne.addEventListener("click", changeBackgroundColorOnClick, false);
+	catalogOne.parameter = "one"; //catalogOne einen Parameter hinzufügen
 	catalogSimple.addEventListener("click", changeBackgroundColorOnClick, false);
+	catalogSimple.parameter = "simple";
 	catalogSysProg.addEventListener("click", changeBackgroundColorOnClick, false);
+	catalogSysProg.parameter = "sysprog";
 	
 }
+
+
 
 function changeBackgroundColorOnClick(event){
 	//alert("changeBackgroundColorOnClick");
 	//alert(document.getElementById("catalogOne").style.backgroundColor);
-	var currentColor = document.getElementById("catalogOne").style.backgroundColor; 
-	var catalogOne = document.getElementById("catalogOne");
 	
-	if(currentColor == ""){
-		catalogOne.style.backgroundColor = "orangered";
+	var catalogOne = document.getElementById("catalogOne");
+	var currentColorOne = document.getElementById("catalogOne").style.backgroundColor; 
+	
+	var catalogSimple = document.getElementById("catalogSimple");
+	var currentColorSimple = document.getElementById("catalogSimple").style.backgroundColor; 
+	
+	var catalogSysProg = document.getElementById("catalogSysProg");
+	var currentColorSysProg = document.getElementById("catalogSysProg").style.backgroundColor;
+	
+	var flag = false;
+	
+	
+	
+	switch(event.target.parameter){
+	
+	case "one":	
+			if(currentColorOne == ""){
+				catalogOne.style.backgroundColor = "orangered";
+			}
+			else{
+				catalogOne.style.backgroundColor = "";
+			}
+			break;
+		
+	case "simple":	
+			if(currentColorSimple == ""){
+				catalogSimple.style.backgroundColor = "orangered";
+			}
+			else{
+				catalogSimple.style.backgroundColor = "";
+			}
+			break;
+			
+	case "sysprog":
+			if(currentColorSysProg == ""){
+				catalogSysProg.style.backgroundColor = "orangered";
+			}
+			else{
+				catalogSysProg.style.backgroundColor = "";
+			}
+			break;
+			
+	default: alert("Parameter ungültig: " + event.target.parameter);
+	
 	}
-	else{
-		catalogOne.style.backgroundColor = "";
-	}
+	
+	
+	
 }
 
 
