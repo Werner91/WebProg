@@ -26,9 +26,16 @@ function addPlayerToTable(){
 		alert("Bitte geben Sie einen Namen ein!");
 	}
 	else{
+		
 		var tr = document.createElement("tr");
+		var td1 = document.createElement("td");
+		var td2 = document.createElement("td");
 		var playerNameText = document.createTextNode(playerName);
-		tr.appendChild(playerNameText);
+		
+		
+		td2.appendChild(playerNameText);
+		tr.appendChild(td1);
+		tr.appendChild(td2);
 		table.appendChild(tr);
 	}
 }
