@@ -41,7 +41,7 @@ function changeBackgroundColorOnClick(event){
 	var currentColorSysProg = document.getElementById("catalogSysProg").style.backgroundColor;
 	
 	
-	switch(event.target.parameter){ //holt parameter
+	switch(event.target.parameter){ 
 		
 	case "one":	
 			if(currentColorOne == ""){
