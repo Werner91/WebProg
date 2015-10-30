@@ -20,6 +20,7 @@
 	
 	
 	<body>
+	
 		<header class="page_header">
 			<div>
 				<h1>
@@ -28,8 +29,12 @@
 				</h1>
 			</div>
 		</header>
+		
+		
 
 		<div class="content">
+		
+		
 			<div class="playground" style="float:left">
 				<label>
 					Name:
@@ -37,19 +42,13 @@
 				</label>
 				<br>
 				<input id="buttonLogin" class="loginbutton" type="submit" value="Login" />
-			</div>
+			</div>	<!-- Ende Playground -->
+			
+			
 			<div class="catalogs" style="float:right">
 				<h4>
 				<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
                 <span>Catalogs</span>
-                </h4>
-                <hr/>
-			</div>
-			<br>
-			<div class="highscore" style="float:right">
-				<h4>
-				<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                <span>Highscore</span>
                 </h4>
                 <hr/>
                 <table id="highscoreTable" class="table table-hover">
@@ -69,8 +68,39 @@
 					
                </tbody>
                </table>
-			</div>
-		</div>
+            </div>	<!-- Ende Catalogs -->
+            
+			
+			<br>
+			<div class="highscore" style="float:right">
+				<h4>
+				<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                <span>Highscore</span>
+                </h4>
+                <hr/>
+                
+                <table id="highscoreTable" class="table table-hover">
+          		<thead>
+               		<tr>
+                    	<td>#</td>
+                  		<td>Player</td>
+        				<td>Score</td>
+         			</tr>
+				</thead>
+				<tbody id="tablePlayerlistBody">
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>								
+					</tr>
+					
+               </tbody>
+               </table>
+               
+			</div>	<!-- Ende Highscore -->
+			
+			
+		</div>	<!-- Ende Content -->
 		
 		<footer>
 		 	<hr/>
@@ -80,5 +110,6 @@
 				<br/>
 			 Gruppe: Stroh, Strohm, Steinbinder
 		</footer>
+		
 	</body>
 </html>
