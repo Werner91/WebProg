@@ -5,6 +5,7 @@ var headline = "WebQuiz";
 var begin = 0;
 var end = headline.length;
 
+
 function init(){
 	//alert("init aufgerufen");
 	lauftext();
@@ -27,11 +28,46 @@ function init(){
 	catalogSysProg.addEventListener("click", changeBackgroundColorOnClick, false);
 	catalogSysProg.parameter = "sysprog";
 	
-	var startButton = document.getElementById("buttonStart").disabled = true; //Start Button deaktivieren
-	//startButton.style = "background-color: black";
+	var startButton = document.getElementById("buttonStart"); //Start Button deaktivieren
+	startButton.disabled = true; //Start Button deaktivieren
+	
+	
+	
+	
 	
 }
 
+function showQuestion(){
+	//alert("showQuestion aufgerufen");
+	var frage = document.createTextNode("Welcher Mechanismus kann unter Unix zur Kommunikation "
+		+ "über das Netzwerk verwendet werden?");
+	var antwort_1 =	document.createTextNode("Sockets");
+	var antwort_2 =	document.createTextNode("Message Queues");
+	var antwort_3 =	document.createTextNode("Pipes");
+	var antwort_4 =	document.createTextNode("Semaphore");
+	
+	var showQuestionBox = document.getElementById("showQuestionBox");
+	
+	var ul = document.createElement("ul");
+	var liFrage = document.createElement("li");
+	var li_1 = document.createElement("li");
+	var li_2 = document.createElement("li");
+	var li_3 = document.createElement("li");
+	var li_4 = document.createElement("li");
+	
+	liFrage.appendChild(frage);
+	li_1.appendChild(antwort_1);
+	li_2.appendChild(antwort_2);
+	li_3.appendChild(antwort_3);
+	li_4.appendChild(antwort_4);
+	
+	ul.appendChild(liFrage);
+	ul.appendChild(li_1);
+	ul.appendChild(li_2);
+	ul.appendChild(li_3);
+	ul.appendChild(li_4);
+	showQuestionBox.appendChild(ul);
+}
 
 function lauftext(){
 	document.getElementById("headlineticker").value = "" +
@@ -140,7 +176,7 @@ function addPlayerToTable(){
 		}
 		else{
 			playerCount += 1;
-			alert(playerCount);
+			//alert(playerCount);
 			
 			var tr = document.createElement("tr");
 			var td1 = document.createElement("td");
@@ -155,7 +191,9 @@ function addPlayerToTable(){
 		}
 		
 		if(playerCount == 2){
-			var startButton = document.getElementById("buttonStart").disabled = false; //Start Button deaktivieren
+			var startButton = document.getElementById("buttonStart");
+			startButton.disabled = false; //Start Button aktivieren
+			startButton.addEventListener("click", showQuestion, false);
 		}
 	}
 	else{
