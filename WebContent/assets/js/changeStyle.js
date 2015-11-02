@@ -39,6 +39,8 @@ function init(){
 
 function showQuestion(){
 	//alert("showQuestion aufgerufen");
+	var playground = document.getElementById("loginFormular").innerHTML = "";
+	
 	var frage = document.createTextNode("Welcher Mechanismus kann unter Unix zur Kommunikation "
 		+ "über das Netzwerk verwendet werden?");
 	var antwort_1 =	document.createTextNode("Sockets");
