@@ -102,7 +102,7 @@ function lauftext(){
 function putPlayerToTheTop(event1){
 	//alert("test aufgerufen!");
 	
-	alert(event1.target.id);
+	alert(event1.target.parameter);
 	//var table = document.getElementById("tablePlayerlistBody").innerHTML = "";
 	//var playerWhoWasClickedOn =
 	
