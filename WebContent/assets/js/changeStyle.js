@@ -1,10 +1,10 @@
 
 document.addEventListener("DOMContentLoaded", init, false); //Event wird geworfen, wenn DOM-Baum geladen
-var playerCount = 0;
+var playerCount = 1;
 var headline = "WebQuiz";
 var begin = 0;
 var end = headline.length;
-
+var playerIdArray = new Array();
 
 function init(){
 	//alert("init aufgerufen");
@@ -31,11 +31,22 @@ function init(){
 	var startButton = document.getElementById("buttonStart"); //Start Button deaktivieren
 	startButton.disabled = true; //Start Button deaktivieren
 	
-	
-	
+	//listener Spieler
+	var player1 = document.getElementById("player1");
+	player1.addEventListener("click", putPlayerToTheTop, false);
+	player1.parameter = "spieler1";
+/*	var player2 = document.getElementById("player2").addEventListener("click", putPlayerToTheTop, false);
+	var player3 = document.getElementById("player3").addEventListener("click", putPlayerToTheTop, false);
+	var player4 = document.getElementById("player4").addEventListener("click", putPlayerToTheTop, false);
+	var player5 = document.getElementById("player5").addEventListener("click", putPlayerToTheTop, false);
+	var player6 = document.getElementById("player6").addEventListener("click", putPlayerToTheTop, false);*/
 	
 	
 }
+
+
+
+
 
 function showQuestion(){
 	//alert("showQuestion aufgerufen");
@@ -85,6 +96,56 @@ function lauftext(){
 
 
 
+
+
+
+function putPlayerToTheTop(event1){
+	//alert("test aufgerufen!");
+	
+	alert(event1.target.id);
+	//var table = document.getElementById("tablePlayerlistBody").innerHTML = "";
+	//var playerWhoWasClickedOn =
+	
+}
+
+
+
+function addPlayerToTable(){
+	
+	var playerName = document.getElementById("inputPlayerName").value; //Spielername aus Textfeld wird übergeben
+	//var table = document.getElementById("tablePlayerlistBody");
+	var table = document.getElementById("player" + playerCount);
+	
+	var maxPlayer = 6;
+	//alert(document.getElementById("inputPlayerName"));
+	
+	alert("player" + playerCount);
+	if(playerCount <= maxPlayer){
+		if(playerName === ""){ //wenn kein Name eingegebn und login geklickt wurde
+			alert("Bitte geben Sie einen Namen ein!");
+		}
+		else{
+			playerCount += 1;
+			var playerNameText = document.createTextNode(playerName);
+			
+			table.innerHTML = "<td><td>" + playerName + "<td>";
+		
+		}
+		
+		if(playerCount == 2){
+			var startButton = document.getElementById("buttonStart");
+			startButton.disabled = false; //Start Button aktivieren
+			startButton.addEventListener("click", showQuestion, false);
+		}
+	}
+	else{
+		alert("Maximale Spieleranzahl erreicht!");
+	}
+	
+
+}
+
+
 function changeBackgroundColorOnClick(event){
 	//alert("changeBackgroundColorOnClick");
 	//alert(document.getElementById("catalogOne").style.backgroundColor);
@@ -98,7 +159,7 @@ function changeBackgroundColorOnClick(event){
 	var catalogSysProg = document.getElementById("catalogSysProg");
 	var currentColorSysProg = document.getElementById("catalogSysProg").style.backgroundColor;
 	
-	
+	alert(event.target.parameter);
 	switch(event.target.parameter){ 
 		
 	case "one":	
@@ -159,50 +220,6 @@ function changeBackgroundColorOnClick(event){
 		
 	}
 }
-
-
-
-
-
-function addPlayerToTable(){
-	
-	var playerName = document.getElementById("inputPlayerName").value; //Spielername aus Textfeld wird übergeben
-	var table = document.getElementById("tablePlayerlistBody");
-	var maxPlayer = 6;
-	//alert(document.getElementById("inputPlayerName"));
-	
-	
-	if(playerCount <= maxPlayer){
-		if(playerName === ""){ //wenn kein Name eingegebn und login geklickt wurde
-			alert("Bitte geben Sie einen Namen ein!");
-		}
-		else{
-			playerCount += 1;
-			//alert(playerCount);
-			
-			var tr = document.createElement("tr");
-			var td1 = document.createElement("td");
-			var td2 = document.createElement("td");
-			var playerNameText = document.createTextNode(playerName);
-			
-			
-			td2.appendChild(playerNameText);
-			tr.appendChild(td1);
-			tr.appendChild(td2);
-			table.appendChild(tr);
-		}
-		
-		if(playerCount == 2){
-			var startButton = document.getElementById("buttonStart");
-			startButton.disabled = false; //Start Button aktivieren
-			startButton.addEventListener("click", showQuestion, false);
-		}
-	}
-	else{
-		alert("Maximale Spieleranzahl erreicht!");
-	}
-}
-
 
 
 function changeStyleHalloween(event){
