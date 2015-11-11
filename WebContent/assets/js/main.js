@@ -4,7 +4,7 @@ var playerCount = 1;
 var headline = "WebQuiz";
 var begin = 0;
 var end = headline.length;
-var playerIdArray = new Array();
+
 
 function init(){
 	//alert("init aufgerufen");
@@ -30,17 +30,6 @@ function init(){
 	
 	var startButton = document.getElementById("buttonStart"); //Start Button deaktivieren
 	startButton.disabled = true; //Start Button deaktivieren
-	
-	//listener Spieler
-	var player1 = document.getElementById("player1");
-	player1.addEventListener("click", putPlayerToTheTop, false);
-	player1.parameter = "spieler1";
-/*	var player2 = document.getElementById("player2").addEventListener("click", putPlayerToTheTop, false);
-	var player3 = document.getElementById("player3").addEventListener("click", putPlayerToTheTop, false);
-	var player4 = document.getElementById("player4").addEventListener("click", putPlayerToTheTop, false);
-	var player5 = document.getElementById("player5").addEventListener("click", putPlayerToTheTop, false);
-	var player6 = document.getElementById("player6").addEventListener("click", putPlayerToTheTop, false);*/
-	
 	
 }
 
@@ -99,12 +88,11 @@ function lauftext(){
 
 
 
-function putPlayerToTheTop(event1){
-	//alert("test aufgerufen!");
-	
-	alert(event1.target.parameter);
-	//var table = document.getElementById("tablePlayerlistBody").innerHTML = "";
-	//var playerWhoWasClickedOn =
+function putPlayerToTheTop(event){
+	//alert("putPlayerToTheTop aufgerufen!");
+	var tr = this.parentNode;
+	var playerlist = document.getElementById("tablePlayerlistBody");
+	playerlist.insertBefore(tr,playerlist.firstChild);
 	
 }
 
@@ -113,23 +101,32 @@ function putPlayerToTheTop(event1){
 function addPlayerToTable(){
 	
 	var playerName = document.getElementById("inputPlayerName").value; //Spielername aus Textfeld wird übergeben
-	//var table = document.getElementById("tablePlayerlistBody");
-	var table = document.getElementById("player" + playerCount);
-	
+	var playerlist = document.getElementById("tablePlayerlistBody");
 	var maxPlayer = 6;
-	//alert(document.getElementById("inputPlayerName"));
+	//alert(playerName);
 	
-	alert("player" + playerCount);
 	if(playerCount <= maxPlayer){
 		if(playerName === ""){ //wenn kein Name eingegebn und login geklickt wurde
 			alert("Bitte geben Sie einen Namen ein!");
 		}
 		else{
+		//	alert("else");
 			playerCount += 1;
-			var playerNameText = document.createTextNode(playerName);
 			
-			table.innerHTML = "<td><td>" + playerName + "<td>";
-		
+			var tr = document.createElement("tr");
+			
+			var td1 = document.createElement("td");
+			var td2 = document.createElement("td");
+			
+			var playernameText = document.createTextNode(playerName);
+			
+			td1.appendChild(playernameText);
+			
+			tr.appendChild(td1);
+			tr.appendChild(td2);
+			
+			playerlist.appendChild(tr);
+			
 		}
 		
 		if(playerCount == 2){
@@ -142,6 +139,8 @@ function addPlayerToTable(){
 		alert("Maximale Spieleranzahl erreicht!");
 	}
 	
+	td1.addEventListener("click", putPlayerToTheTop, false);
+	td1.parameter = playername;
 
 }
 
@@ -159,7 +158,7 @@ function changeBackgroundColorOnClick(event){
 	var catalogSysProg = document.getElementById("catalogSysProg");
 	var currentColorSysProg = document.getElementById("catalogSysProg").style.backgroundColor;
 	
-	alert(event.target.parameter);
+	//alert(event.target.parameter);
 	switch(event.target.parameter){ 
 		
 	case "one":	
