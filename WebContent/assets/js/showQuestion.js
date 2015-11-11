@@ -29,8 +29,15 @@ function showQuestion(){
 	ul.appendChild(li_2);
 	ul.appendChild(li_3);
 	ul.appendChild(li_4);
-	showQuestionBox.appendChild(ul);
+	showQuestionBox.appendChild(ul); //ul in div-container einfügen
 	
-	
+	/*  <ul>
+	 * 		<li>frage</li>
+	 * 		<li>antwort</li>
+	 * 		<li>antwort</li>
+	 * 		<li>antwort</li>
+	 * 		<li>antwort</li>
+	 * </ul>
+	 */
 	
 }
