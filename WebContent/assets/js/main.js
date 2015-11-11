@@ -1,5 +1,5 @@
 
-document.addEventListener("DOMContentLoaded", init, false); //Event wird geworfen, wenn DOM-Baum geladen
+document.addEventListener("DOMContentLoaded", init, false); //Event wird geworfen, wenn DOM-Baum geladen, dann init methode ausgeführt
 var playerCount = 1;
 var headline = "WebQuiz";
 var begin = 0;
@@ -72,8 +72,9 @@ function showQuestion(){
 }
 
 function lauftext(){
+	//headline = WebQuiz
 	document.getElementById("headlineticker").value = "" +
-	headline.substring(begin,end) + " " + headline.substring(0,begin);
+	headline.substring(begin,end) + " " + headline.substring(0,begin); //substring(begin, end) -> gesamter Text WebQuiz wird angezeigt
 	begin ++;
 	if(begin >= end)
 	{ 
