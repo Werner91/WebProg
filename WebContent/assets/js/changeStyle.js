@@ -1,20 +1,14 @@
 function changeBackgroundColorOnClick(event){
-	//alert("changeBackgroundColorOnClick");
-	//alert(document.getElementById("catalogOne").style.backgroundColor);
 	
-	var catalogOne = document.getElementById("catalogOne");
+	//holt die aktuellen farben der katalog-schriftzüge
 	var currentColorOne = document.getElementById("catalogOne").style.backgroundColor; 
-	
-	var catalogSimple = document.getElementById("catalogSimple");
 	var currentColorSimple = document.getElementById("catalogSimple").style.backgroundColor; 
-	
-	var catalogSysProg = document.getElementById("catalogSysProg");
 	var currentColorSysProg = document.getElementById("catalogSysProg").style.backgroundColor;
 	
-	//alert(event.target.parameter);
-	switch(event.target.parameter){ 
+	
+	switch(event.target.id){ 
 		
-	case "one":	
+	case "catalogOne":	
 			if(currentColorOne == ""){
 				catalogOne.style.backgroundColor = "orangered";
 			}
@@ -32,7 +26,7 @@ function changeBackgroundColorOnClick(event){
 				
 			break;
 			
-	case "simple":	
+	case "catalogSimple":	
 			if(currentColorSimple == ""){
 				catalogSimple.style.backgroundColor = "orangered";
 			}
@@ -50,7 +44,7 @@ function changeBackgroundColorOnClick(event){
 				
 			break;
 				
-	case "sysprog":
+	case "catalogSysProg":
 			if(currentColorSysProg == ""){
 				catalogSysProg.style.backgroundColor = "orangered";
 			}

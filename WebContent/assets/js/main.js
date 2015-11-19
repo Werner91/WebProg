@@ -7,26 +7,34 @@ var end = headline.length;
 
 
 function init(){
+	
 	//alert("init aufgerufen");
-	lauftext();
-	var buttonStyleStandard = document.getElementById("buttonStyleStandard").addEventListener("click", changeStyleStandard, false);
+	
+	lauftext(); //lauftext starten
+	
+	//referenz buttons holen
+	var buttonStyleStandard = document.getElementById("buttonStyleStandard");
 	var buttonStyleChristmas = document.getElementById("buttonStyleChristmas");
 	var buttonStyleHalloween = document.getElementById("buttonStyleHalloween");
 	var buttonLogin = document.getElementById("buttonLogin");
+	
+	//den buttons listener hinzufügen
+	buttonStyleStandard.addEventListener("click", changeStyleStandard, false);
+	buttonStyleChristmas.addEventListener("click", changeStyleChristmas, false);
+	buttonStyleHalloween.addEventListener("click", changeStyleHalloween, false); /*false: Listener reagiert erst beim Bubbling/ true: Listener reagiert beim absteigen im Baum*/
+	buttonLogin.addEventListener("click", addPlayerToTable, false);
+	
+	
+	//referenz der kataloge holen
 	var catalogOne = document.getElementById("catalogOne");
 	var catalogSimple = document.getElementById("catalogSimple");
 	var catalogSysProg = document.getElementById("catalogSysProg");
 	
-	//buttonStyleStandard.addEventListener("click", changeStyleStandard, false);
-	buttonStyleChristmas.addEventListener("click", changeStyleChristmas, false);
-	buttonStyleHalloween.addEventListener("click", changeStyleHalloween, false); /*false: Listener reagiert erst beim Bubbling/ true: Listener reagiert beim absteigen im Baum*/
-	buttonLogin.addEventListener("click", addPlayerToTable, false);
+	//den katalogeinträgen listener hinzufügen
 	catalogOne.addEventListener("click", changeBackgroundColorOnClick, false);
-	catalogOne.parameter = "one"; //catalogOne einen Parameter hinzufügen
 	catalogSimple.addEventListener("click", changeBackgroundColorOnClick, false);
-	catalogSimple.parameter = "simple";
 	catalogSysProg.addEventListener("click", changeBackgroundColorOnClick, false);
-	catalogSysProg.parameter = "sysprog";
+	
 	
 	var startButton = document.getElementById("buttonStart"); //Start Button deaktivieren
 	startButton.disabled = true; //Start Button deaktivieren

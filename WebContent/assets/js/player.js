@@ -50,6 +50,5 @@ function addPlayerToTable(){
 	}
 	
 	td1.addEventListener("click", putPlayerToTheTop, false);
-	td1.parameter = playername;
-
+	
 }

@@ -8,5 +8,7 @@ function lauftext(){
 	 begin = 0; 
 	}
 	/* Laufgeschwindigkeit: Höhere Zahl = langsamer */
-	window.setTimeout("lauftext()", 300); 
+	//window.setTimeout("lauftext()", 300); 
 }
+
+window.setInterval("lauftext()", 300);
