@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -20,10 +21,20 @@
 		<script type="text/javascript" src="assets/js/showQuestion.js"></script>
 		<script type="text/javascript" src="assets/js/player.js"></script>
 		
+		<!-- JSP import -->
+		<%@ page import="de.fhwgt.quiz.application.Quiz" %>
+		<%@ page import="de.fhwgt.quiz.application.Player" %>
+		
 	</head>
 	
 	
 	<body>
+	
+		<%  //erzeuge Spielelogik
+			Quiz quiz = Quiz.getInstance();
+		%>
+	
+	
 	
 		<header class="page_header">
 			<div>
@@ -46,19 +57,19 @@
 			<div class="playground" style="float:left">
 				<div id="loginFormular">
 					
-				<!--  	<form action="GetLoginData" method="get" enctype="multipart/form-data">-->
+					<!-- Formular mit JSP -->
+				  	<form action="<%= response.encodeURL("GetLoginData")%>">
 				
 						<label>
 							Name:
 							<input id="inputPlayerName" class="textbox" type="text" name="inputPlayerName" size="30" maxlength="30">
 						</label>
 						<br>
-						<input id="buttonLogin" class="loginbutton" type="submit" value="Login" />
-						<input id="buttonStart" class="loginbutton" type="submit" value="start" />
+						<input id="buttonLogin" name="buttonLogin" class="loginbutton" type="submit" value="Login" />
+						<input id="buttonStart" name="buttonStart" class="loginbutton" type="submit" value="start" />
 						
-					<!-- </form> -->
-					
-					
+					 </form>
+					 
 				</div>	
 				
 				
@@ -71,15 +82,49 @@
 			
 			<div class="catalogs" style="float:right">
 				<h4>
-				<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                <span>Catalogs</span>
+					<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+	                <span>Catalogs</span>
                 </h4>
+                
                 <hr/>
-                <table	 id="catalogsTable">
+                
+                
+                <%
+                	String[] catalogList = Quiz.getInstance().getCatalogList().keySet().toArray(new String[0]);
+                
+					//verfügbare Kataloge anzeigen
+					for(int i = 0; i < catalogList.length; i++){
+					%>
+					
+					<div class="catalogList">
+						<%= catalogList[i] %>
+					</div>
+						
+						
+						
+						
+					<%	
+					}
+              		%>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <!--<table	 id="catalogsTable">
           			<tr><td id="catalogOne">One</td></tr>
                		<tr><td id="catalogSimple">Simple</td></tr>
                		<tr><td id="catalogSysProg">SysProg</td></tr>
 				</table>
+				-->
             </div>	<!-- Ende Catalogs -->
             
 			
@@ -92,18 +137,44 @@
                 <hr/>
                 
                 <table id="highscoreTable" class="table table-hover">
-          		<thead>
-               		<tr>
-                    	<td>Player</td>
-        				<td>Score</td>
-         			</tr>
-				</thead>
-				
-				<tbody id="tablePlayerlistBody">
+	          		<thead>
+	               		<tr>
+	                    	<td>Player</td>
+	        				<td>Score</td>
+	         			</tr>
+					</thead>
 					
-				
-					
-				</tbody>
+					<tbody id="tablePlayerlistBody">
+						<% Player[] playerList = Quiz.getInstance().getPlayerList().toArray(new Player[0]);
+						
+						//playerList Table erstellen
+						if(playerList.length == 0){
+							%>
+								
+								<tr>
+									<td>Keine Spieler</td>
+									<td></td>
+									<td></td>
+								</tr>	
+		
+							<%
+							}
+						else{ //wenn Spieler vorhanden
+							
+							for(int i = 0; i < playerList.length; i++){
+								%>
+								
+									<tr>
+										<td><%= playerList[i].getName() %></td>
+										<td><%= playerList[i].getScore() %></td>
+									</tr>	
+								
+								<%	
+							}
+						}
+						%>
+						
+					</tbody>
                </table>
                
 			</div>	<!-- Ende Highscore -->

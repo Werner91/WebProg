@@ -6,6 +6,18 @@ function changeBackgroundColorOnClick(event){
 	var currentColorSysProg = document.getElementById("catalogSysProg").style.backgroundColor;
 	
 	
+	/*var i = 0;
+	var catMax = 3;
+	
+	while(i < 3){
+		var catalogOne = document.getElementById("catalogOne").style.backgroundColor = ""; 
+		var catalogSimple = document.getElementById("catalogSimple").style.backgroundColor = ""; 
+		var catalogSysProg = document.getElementById("catalogSysProg").style.backgroundColor = "";
+	}*/
+	
+	
+	
+	
 	switch(event.target.id){ 
 		
 	case "catalogOne":	
@@ -62,7 +74,7 @@ function changeBackgroundColorOnClick(event){
 				
 			break;
 				
-	default: alert("Parameter ungültig: " + event.target.parameter);
+	default: alert("Parameter ungültig: " + event.target.parameter); 
 		
 	}
 }
