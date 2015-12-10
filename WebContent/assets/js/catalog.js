@@ -1,0 +1,23 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function highlightChoosenCatalog(catalogName){
+	
+	
+	
+	
+	
+	
+}

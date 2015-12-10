@@ -92,7 +92,7 @@ public class FilesystemLoader implements CatalogLoader {
         
         String path = "C:\\Users\\Achimpb\\git\\WebProg\\catalogs";
         
-        File catalogFolder = new File(path);
+        File catalogFolder = new File(path); //File Objekt repräsentiert Verzeichnisnamen im Dateisystem
         String[] files = listFilesInFolder(catalogFolder); //holt sich die Dateien, die in dem Ordner liegen
         
         //Liste verwaltet die XML-Dateien (Fragekataloge) 
@@ -104,7 +104,7 @@ public class FilesystemLoader implements CatalogLoader {
         		
         		if(isXMLFile(filename)){
         			xmlDocuments.add(new SAXBuilder().build(filename)); //einlesen der XML-Dateien. Parsen der Datei in ein JDOM2 Dokument
-        		//???????????cast
+        		
         		}
         	}catch(Exception e){
         		e.printStackTrace();
@@ -116,6 +116,30 @@ public class FilesystemLoader implements CatalogLoader {
         for(Document doc : xmlDocuments){
         	Element fragenkatalog = doc.getRootElement();
         	catalogs.put(fragenkatalog.getAttributeValue("name"), new Catalog(fragenkatalog.getAttributeValue("name"), null));
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
         	
         }
         return catalogs;
