@@ -290,15 +290,42 @@ function sendWSMessage(type){
 
 
 
+/*
+ * Funnktion reagiert auf den Klick auf den
+ * Login Button. Eingabe des Spielers wird
+ * ausgwertet und an den Server gesendet
+ */
 function clickedLogin(event){
 	
+	var inputName = document.getElementById("inputPlayerName");
+	var playerName = inputName.value;
 	
+	//verify user name
+	if(playerName == ""){
+		alert("Es wurde kein Name eingegeben!");
+	}
+	else{
+		//send Login Request
+		sendWSMessage(1);
+	}
+	event.stopPropagation(); //stops event bubbling, other handlers won't be executed
 }
 
 
 
+
+/*
+ * Listener für den Klick auf den Start-Button
+ * Main-div wird aktualisert und eine Spiel-Starten-
+ * Nachricht wird an den Server gesendet
+ */
 function clickedStart(event){
+	//clean up main div
+	clearLoginDiv();
 	
+	//send GameSart
+	sendWSMessage(7);
+	event.stopPropagation();
 }
 
 
@@ -306,33 +333,174 @@ function clickedStart(event){
 
 function processSuccessfullLogin(){
 	
+	//remove login button + name input field
+	var playground = document.getElementById("playground");
+	playground.removeChild(document.getElementById("loginFormular"));
+	
+	//change text of start nutton
+	var startButton = document.getElementById("startButton");
+	
+	if(playerId == 0){
+		//Spielleiter
+		startButton.textContent = "Warte auf weitere Spieler ...";
+	}
+	else{
+		//normaler Spieler
+		startButton.textContent = "Warte auf Spielstart ...";
+	}
+	
 	
 }
 
 
 
+
+/*
+ * Funktion entfernt den Inhalt aus dem main-div
+ * (z.B. Login-Feld, Login-Button)
+ */
 function clearLoginDiv(){
 	
+	//clean up playground
+	document.getElementById("playground").innerHTML = "";
 	
 }
 
+
+
+
+
+
+/*
+ * Funktion aktualisiert den main-div und legt darin Inhalte für 
+ * Fragen, Antworten und Timeout an
+ */
 function showGameDiv(){
 	
+	var playground = document.getElementById("playground");
 	
+	//create div-container for headline (questioncatalog), question, answer, timer
+	var questDiv = document.createElement("div");
+	questDiv.id = "questDiv";
 	
+	//headline questioncatalog
+	var title = document.createElement("h3");
+	title.id = "GameDivTitle";
+	title.textContent = "Fragenkatalog: " + activeCatalog;
 	
+	//div-container for question
+	var question = document.createElement("div");
+	question.id = "QuestionText";
+	question.style.fontSize = "16px";
+	
+	questDiv.appendChild(title);
+	questDiv.appendChild(question);
+	
+	var answers = [];
+	
+	for(var i = 0; i < 4; i++){
+		answers[i] = focumnet.createElement("div");
+		answers[i].className = "answerDiv";
+		answers[i].id = i;
+		
+		answers[i].addEventListener("click", function(event){
+			if(isQuestionActive){
+				//lese Antwort Auswahl aus
+				curSelection = event.target.id;
+				console.log("clicked answer: " + event.target.id);
+				
+				//sende QuestionAnswered
+				sendWSMessage(10);
+			}
+		}, false);
+		
+		//füge dem div eine Frage hinzu ("zeige Frage an")
+		questDiv.appendChild(answers[i]);
+	}
+	
+	//timeout
+	var timeOut = document.createElement("p");
+	timeOut.id = "timeOut";
+	
+	//füge Timer aus dem dic hinzu
+	questDiv.appendChild(timeOut);
+	
+	//füge Überschrift (Fragenkatalog), Frage, Antworten, Timer dem playground-dvi hinzu
+	playground.appendChild(questDiv);
+
 }
 
 
+
+/*
+ * Funktion zeigt aktuelle Frage, Antworten und Timeout an
+ */
 function showQuestion(){
+	console.log("frage anzeigen");
 	
+	document.getElementById("QuestionText").textContent = curQuestion;
 	
+	var answerText = [curAnswer1, curAnswer2, curAnswer3, curAnswer4];
+	
+	var answers = document.getElementsByClassName("answerDiv");
+	
+	for (var i = 0; i < 4; i++) {
+		answers[i].style.borderColor = "black";
+		answers[i].style.backgroundColor = "white";
+		answers[i].textContent = answerText[i];
+	}
+	document.getElementById("timeOut").textContent = "Time Out: " + curTimeOut	+ " Sekunden";
 	
 }
 
 
 
 
+/*
+ * Funktion zeigt Spielende und die Position
+ * des Spielers an
+ */
+function GameOver(parsedJSONMessage){
+	
+	var questDiv = document.getElementById("questDiv");
+	while(questDiv.firstChild){
+		questDiv.removeChild(questDiv.firstChild);
+	}
+	
+	var title = document.createElement("h3");
+	title.textContent = "Game Over!";
+	questDiv.appendChild(title);
+	
+	rank = parsedJSONMessage.rank;
+	
+	var confirmDialog = false;
+	
+	if(rank == 1){
+		// Spiel gewonnen
+		//alert("Glückwünsch. Sie haben das Spiel gewonnen!");
+		confirmDialog = confirm("Glückwünsch. Sie haben das Spiel gewonnen!\n\nNeues Spiel starten?");
+	} else {
+		// Spiel nicht gewonnen
+		// alert("Glückwünsch. Sie wurden " + rank + ".!");
+		confirmDialog = confirm("Glückwünsch. Sie wurden " + rank + "!\n\nNeues Spiel starten?");
+	}
+	
+	console.log("Game over. Reload page: " + confirmDialog);
+	
+	// hat der Spieler mit Ja oder Nein auf den Dialog geantwortet?
+	if(confirmDialog){ // ja
+		// reload page
+		location.reload();
+	} else { // nein
+		// clean up main div
+		if(rank == 1){
+			document.getElementById("main").innerHTML = "<h1>Glückwünsch. Sie haben das Spiel gewonnen!</h1><p><br><br><br><h3>Laden Sie die Seite neu um ein neues Spiel zu starten";			
+		} else {
+			document.getElementById("main").innerHTML = "<h1>Glückwünsch. Sie wurden " + rank + "!</h1><p><br><br><br><h3>Laden Sie die Seite neu um ein neues Spiel zu starten";			
+		}					
+	}
+
+}
 
 
 
